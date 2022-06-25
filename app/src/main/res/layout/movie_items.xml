@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="200dp"
+    android:layout_margin="18dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/name_txt"
+            android:layout_width="90dp"
+            android:layout_height="20dp"
+            android:maxLines="1"
+            android:layout_margin="4dp"
+            android:text="Movie Name"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view" />
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/movieID"
+            android:layout_width="49dp"
+            android:layout_height="16dp"
+            android:layout_margin="4dp"
+            android:text="Movie ID"
+            android:textSize="12dp"
+            android:textColor="@color/white"
+            android:layout_below="@id/image_view"/>
+
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/name_txt"
+            android:layout_width="90dp"
+            android:layout_height="130dp"
+                android:id="@+id/image_view" />
+
+
+        <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text=""
+        android:id="@+id/ratingtxt"
+    android:visibility="gone"
+    />
+        <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text=""
+        android:id="@+id/descriptiontxt1"
+    android:visibility="gone"
+    />
+        <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text=""
+        android:id="@+id/genrestxt"
+    android:visibility="gone"
+    />
+        <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text=""
+        android:id="@+id/castxt"
+    android:visibility="gone"
+    />
+        <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text=""
+        android:id="@+id/directorstxt"
+    android:visibility="gone"
+    />
+
+
+</RelativeLayout>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Test Movies</string>
+
+    <!--Texts .............................  -->
+
+    <string name="description_default_text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus."</string>
+
+    <!-- API'S   .............................  -->
+
+
+
+
+
+    <!--Margins & Paddings...........................  -->
+    <dimen name="margin_default">10dp</dimen>
+    <dimen name="padding_default">5dp</dimen>
+    <dimen name="margin_custom">20dp</dimen>
+    <dimen name="margin_recycler">-25dp</dimen>
+    <dimen name="padding_custom">10dp</dimen>
+
+    <!-- Tex Sizes .............................  -->
+    <dimen name="txt_default_size">14sp</dimen>
+    <dimen name="txt_default_Heading">16sp</dimen>
+    <dimen name="txt_custom_size">18sp</dimen>
+    <dimen name="txt_custom_Heading">20sp</dimen>
+
+    <!--Margins.............................  -->
+
+
+</resources>
