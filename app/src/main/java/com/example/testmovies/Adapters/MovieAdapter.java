@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.testmovies.Interface.RecyclerViewInterface;
 import com.example.testmovies.MainActivity;
 import com.example.testmovies.Model.ModelRV;
+import com.example.testmovies.Model.headerModel;
 import com.example.testmovies.MovieInfo;
 import com.example.testmovies.R;
 
@@ -33,6 +34,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         this.onMovieListener = onMovieListener;
         this.context= context;
     }
+
+
 
     @NonNull
     @Override

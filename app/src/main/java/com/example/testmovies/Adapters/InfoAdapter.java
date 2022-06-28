@@ -47,7 +47,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
 
 
         holder.id.setText(infoModelList.get(position).getId());
-        holder.name.setText(infoModelList.get(position).getId());
+        holder.name.setText(infoModelList.get(position).getName());
         // Image Parsing
         Glide.with(infocontext).load("https://image.tmdb.org/t/p/w500/"+infoModelList.
                 get(position).getImage()).into(holder.img);

@@ -8,35 +8,37 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:background="@color/bg_list"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/recycler"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/poster"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:background="@drawable/ic_launcher_background"
-            android:id="@+id/posterIMG"/>
-    </LinearLayout>
+      <androidx.recyclerview.widget.RecyclerView
+          android:layout_width="match_parent"
+          android:layout_height="200dp"
+          tools:listitem="@layout/header_main"
+          android:orientation="horizontal"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          android:id="@+id/HeaderRecycler"/>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layoutMainRecycler">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="-30dp"
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_movie_list"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:listitem="@layout/movie_items"
-        app:layout_constraintTop_toBottomOf="@id/poster"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         />
 
+    </RelativeLayout>
 
-
-
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,225 +9,226 @@
     tools:context=".MovieInfo">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layoutInfoPoster"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/layoutScroll"
+        app:layout_constraintBottom_toBottomOf="parent"
         >
 
         <ImageView
             android:id="@+id/posterInfo"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:scaleType="centerCrop"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
             android:src="@drawable/ic_launcher_background" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/layoutScroll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutInfoPoster">
-    <ScrollView
-        android:background="@drawable/bg_movie_list"
-        android:id="@+id/infoScroll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <LinearLayout
-            android:layout_margin="@dimen/margin_default"
-            android:id="@+id/layoutInfoBG"
+            android:layout_marginTop="-30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@drawable/bg_movie_list"
+            android:id="@+id/layoutScroll"
+            android:orientation="vertical"
+            android:layout_below="@id/posterInfo">
+
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Release Date"
-                android:textColor="@color/white"
-                android:textAlignment="center"
-                android:layout_marginHorizontal="@dimen/margin_default"
-                android:textSize="@dimen/txt_custom_Heading"
                 android:id="@+id/releaseDate"
-                />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layoutInfoPoster"
-                android:layout_margin="10dp"
-                android:background="@drawable/bg_rating"
-                android:orientation="horizontal"
-                android:padding="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rating: "
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/ratingChange"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4.5"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/movieFullname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_default"
-                android:text="Doctor Strange Into the Madness of Multtiverse"
+                android:textSize="@dimen/txt_custom_Heading"
                 android:textColor="@color/white"
-                android:textSize="@dimen/txt_custom_size"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:text="12-08-1995"
+                android:textAlignment="center"/>
 
-            <RelativeLayout
-                android:id="@+id/infoDiscription"
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/descriptiontxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:text="Description: "
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/descriptionChange"
+                android:id="@+id/scrollView">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/descriptiontxt"
-                    android:layout_marginEnd="10dp"
-                    android:padding="5dp"
-                    android:text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxi"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/infoGenres"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="@dimen/margin_default">
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Genres: "
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:background="@drawable/bg_rating"
+                    android:padding="@dimen/padding_default"
+                    >
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/ratingtxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rating: "
+                        android:textSize="@dimen/txt_default_Heading"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        />
 
-                <TextView
-                    android:id="@+id/genresChange"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:maxLength="10"
-                    android:maxLines="1"
-                    android:padding="5dp"
-                    android:text="Comedy"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7.8"
+                        android:textSize="@dimen/txt_default_size"
+                        android:id="@+id/ratingChange"
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@id/ratingtxt"
+                        android:textColor="@color/black"
 
-            <LinearLayout
+                        />
+                </RelativeLayout>
 
-                android:id="@+id/infoDirectors"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="Doctor Strange Into the Madness of Multtiverse"
+                        android:textSize="@dimen/txt_default_Heading"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/margin_default"
+                        android:id="@+id/moviefullName"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Directors: "
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_default">
 
-                <TextView
-                    android:id="@+id/directorsChange"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:padding="5dp"
-                    android:text="Joseph Kosinski"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                        <TextView
+                            android:id="@+id/descriptiontxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Description: "
+                            android:textStyle="bold"
+                            android:textSize="@dimen/txt_default_Heading"
+                            android:textColor="@color/white"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxi"
+                            android:layout_below="@+id/descriptiontxt"
+                            android:fontFamily="sans-serif"
+                            android:id="@+id/descriptionChange"
+                            />
+                        <RelativeLayout
+                            android:id="@+id/layoutGenres"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/descriptionChange"
+                            android:layout_marginTop="@dimen/margin_default">
 
-            <LinearLayout
-                android:id="@+id/infoCast"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/genrestxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:text="Genres: "
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/txt_default_Heading" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cast: "
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/genresChange"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@id/genrestxt"
+                                android:fontFamily="sans-serif"
+                                android:text="Comedy"
+                                android:textColor="@color/white" />
+                        </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/castChange"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:padding="5dp"
-                    android:text="Tom Cruise · Miles Teller · Jennifer Connelly · Jon Hamm · Glen Powell · Lewis Pullman · Ed Harris · Val Kilmer."
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                        <RelativeLayout
+                            android:id="@+id/layoutDirectors"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/layoutGenres"
+                            android:layout_marginTop="@dimen/margin_default">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Directors: "
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/txt_default_Heading"
+                                android:id="@+id/directorstxt"
+                                android:fontFamily="sans-serif"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/directorstxt"
+                                android:text="David Keminski"
+                                android:textColor="@color/white"
+                                android:fontFamily="sans-serif"
+                                android:layout_centerVertical="true" />
+                        </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:id="@+id/layoutRecycler"
-                android:padding="@dimen/padding_custom"
+                        <RelativeLayout
+                            android:id="@+id/layoutCast"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/layoutDirectors"
+                            android:layout_marginTop="@dimen/margin_default">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Genres: "
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/txt_default_Heading"
+                                android:id="@+id/castxt"
+                                android:fontFamily="sans-serif"
+                                />
 
-                >
+                            <TextView
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Popular Movies: "
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/txt_default_Heading"
-                    android:textStyle="bold"
-                    />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerInfoSuggestions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_default"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="1"
-                tools:listitem="@layout/info_recycler_suggestion_items" />
-            </LinearLayout>
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@id/castxt"
+                                android:fontFamily="sans-serif"
+                                android:text=" Tom Cruise · Miles Teller · Jennifer Connelly · Jon Hamm · Glen Powell · Lewis Pullman · Ed Harris · Val Kilmer."
+                                android:textColor="@color/white" />
+                        </RelativeLayout>
 
+
+                        <LinearLayout
+                            android:id="@+id/layoutRecycler"
+                            android:layout_marginTop="@dimen/margin_default"
+                            android:layout_below="@id/layoutCast"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingBottom="@dimen/padding_custom"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Popular Movies: "
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/txt_default_Heading" />
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/recyclerInfoSuggestions"
+                                    tools:listitem="@layout/info_recycler_suggestion_items"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                    android:orientation="horizontal"
+                                    />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
         </LinearLayout>
+    </RelativeLayout>
 
-</ScrollView>
-    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.testmovies;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -36,20 +38,21 @@ public class MovieInfo extends AppCompatActivity {
 
     private static String JSON_URL = "https://api.themoviedb.org/3/movie/popular?api_key=48c540694574b59258d76c1608bf2d46";
 
-    ScrollView scrollView;
+    NestedScrollView scrollView;
     ArrayList<InfoModel> infoMovielist;
     RecyclerView recyclerView;
-    LinearLayout linearLayout,LM;
+    RelativeLayout relativeLayout;
+    LinearLayout LM;
     ImageView posterinfoimage;
     TextView name,release_Date,description,rating,genres;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_info);
-        scrollView = findViewById(R.id.infoScroll);
-        linearLayout = findViewById(R.id.layoutInfoPoster);
+        scrollView = findViewById(R.id.scrollView);
+        relativeLayout = findViewById(R.id.layoutInfoPoster);
         posterinfoimage = findViewById(R.id.posterInfo);
-        name = findViewById(R.id.movieFullname);
+        name = findViewById(R.id.moviefullName);
         release_Date = findViewById(R.id.releaseDate);
         description = findViewById(R.id.descriptionChange);
         rating = findViewById(R.id.ratingChange);
