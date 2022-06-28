@@ -25,11 +25,11 @@
         <TextView
             android:layout_centerHorizontal="true"
             android:id="@+id/movieID"
-            android:layout_width="49dp"
+            android:layout_width="wrap_content"
             android:layout_height="16dp"
             android:layout_margin="4dp"
             android:text="Movie ID"
-            android:textSize="12dp"
+            android:textSize="12sp"
             android:textColor="@color/white"
             android:layout_below="@id/image_view"/>
 

@@ -5,14 +5,18 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.testmovies.Adapters.MovieAdapter;
+import com.example.testmovies.Interface.RecyclerViewInterface;
 import com.example.testmovies.Model.ModelRV;
 
 import org.json.JSONArray;
@@ -28,14 +32,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
 
     private static String JSON_URL = "https://api.themoviedb.org/3/movie/top_rated?api_key=48c540694574b59258d76c1608bf2d46";
 
     ArrayList<ModelRV> myMovieList;
     RecyclerView recyclerView;
     LinearLayout linearLayout,LM;
-    ImageView posterimage;
+    ImageView posterimage,images;
+    TextView name,id,mdescription,mrating,mcast,mdirectors,mgenres;
 
 
     @Override
@@ -43,12 +48,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         linearLayout = findViewById(R.id.poster);
-        LM = findViewById(R.id.layoutMain);
         posterimage = findViewById(R.id.posterIMG);
+        name = findViewById(R.id.name_txt);
+        id = findViewById(R.id.movieID);
+        mdescription = findViewById(R.id.descriptiontxt1);
+        mcast = findViewById(R.id.castxt);
+        mdirectors = findViewById(R.id.directorstxt);
+        mrating = findViewById(R.id.ratingtxt);
+        images = findViewById(R.id.image_view);
+
+
 
         myMovieList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler);
-
 
 
         GetData getData = new GetData();
@@ -56,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void OnitemClickedListener(int position) {
+
+
+
+
+    }
 
 
     public class GetData extends AsyncTask<String,String,String>{
@@ -120,11 +139,9 @@ public class MainActivity extends AppCompatActivity {
                     MRV.setId(jsonObject1.getString("release_date"));
                     MRV.setName(jsonObject1.getString("title"));
                     MRV.setImage(jsonObject1.getString("poster_path"));
-                    MRV.setDescription(jsonObject1.getString("overview"));
                     MRV.setRating(jsonObject1.getString("vote_average"));
-                    MRV.setGenres(jsonObject1.getString("genres:name"));
-                    MRV.setCast(jsonObject1.getString("poster_path"));
-                    MRV.setDirectors(jsonObject1.getString("poster_path"));
+                    MRV.setDescription(jsonObject1.getString("overview"));
+
                     myMovieList.add(MRV);
 
                 }
@@ -140,10 +157,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void putDataintoRecyclerView(List<ModelRV> myMovieList) {
 
-        MovieAdapter adapter = new MovieAdapter(this, myMovieList);
+        MovieAdapter adapter = new MovieAdapter(this, myMovieList,this);
         GridLayoutManager gridView = new GridLayoutManager(this,3);
         recyclerView.setLayoutManager(gridView);
         recyclerView.setAdapter(adapter);
+
 
     }
 

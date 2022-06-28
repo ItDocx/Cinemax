@@ -5,6 +5,14 @@ public class ModelRV {
     String Name;
     String id;
     String image;
+    String description;
+    String rating;
+    String genres;
+    String directors;
+    String cast;
+
+    public ModelRV() {
+    }
 
     public String getDescription() {
         return description;
@@ -45,18 +53,6 @@ public class ModelRV {
     public void setCast(String cast) {
         this.cast = cast;
     }
-
-    String description;
-    String rating;
-    String genres;
-    String directors;
-    String cast;
-
-    public ModelRV() {
-
-
-    }
-
 
     public String getName() {
         return Name;
