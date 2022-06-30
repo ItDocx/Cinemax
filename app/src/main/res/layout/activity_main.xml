@@ -23,7 +23,8 @@
           tools:listitem="@layout/header_main"
           android:orientation="horizontal"
           app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-          android:id="@+id/HeaderRecycler"/>
+          android:id="@+id/HeaderRecycler"
+          />
     <RelativeLayout
         android:layout_marginTop="@dimen/margin_default"
         android:layout_width="match_parent"

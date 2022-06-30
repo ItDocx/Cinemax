@@ -5,19 +5,16 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.JsonWriter;
-import android.view.View;
+import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.testmovies.Adapters.MovieAdapter;
 import com.example.testmovies.Adapters.headerAdapter;
+import com.example.testmovies.Dialogues.LoadingDialogue;
 import com.example.testmovies.Interface.HeaderRecyclerInterFace;
 import com.example.testmovies.Interface.RecyclerViewInterface;
 import com.example.testmovies.Model.ModelRV;
@@ -38,9 +35,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface, HeaderRecyclerInterFace {
 
-    private static String JSON_URL = "https://api.themoviedb.org/3/movie/top_rated?api_key=48c540694574b59258d76c1608bf2d46";
+    //API TMDB   https://api.themoviedb.org/3/movie/top_rated?api_key=48c540694574b59258d76c1608bf2d46
 
-    private static String JSON_Header_URL = "https://api.themoviedb.org/3/movie/upcoming?api_key=48c540694574b59258d76c1608bf2d46";
+    //  JSON: https://run.mocky.io/v3/b099ef54-ac80-48bf-abc4-df1137cd0fd5
+    private static final String JSON_URL = " https://api.themoviedb.org/3/movie/top_rated?api_key=48c540694574b59258d76c1608bf2d46";
+
+    private static final String JSON_Header_URL = "https://api.themoviedb.org/3/movie/upcoming?api_key=48c540694574b59258d76c1608bf2d46";
 
     ArrayList<ModelRV> myMovieList;
     ArrayList<headerModel> headerModelArrayList;
@@ -64,6 +64,24 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         images = findViewById(R.id.image_view);
 
 
+
+        // Loader
+
+        LoadingDialogue loadingDialogue = new LoadingDialogue(MainActivity.this);
+
+        loadingDialogue.StartLoadingDialogue();
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialogue.DismissDialogue();
+            }
+        },10000);
+
+
+
+        // Array calling
 
         myMovieList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler);
@@ -95,6 +113,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     }
 
+
+    // Using JSON
 
     public class GetData extends AsyncTask<String,String,String>{
 
@@ -160,8 +180,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                     MRV.setImage(jsonObject1.getString("poster_path"));
                     MRV.setRating(jsonObject1.getString("vote_average"));
                     MRV.setDescription(jsonObject1.getString("overview"));
-
+                    MRV.setDirectors("Kevin Lim, Peter Jackson");
+                    MRV.setGenres("Action, Drama");
                     myMovieList.add(MRV);
+
+
 
                 }
             } catch (JSONException e) {
@@ -253,10 +276,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     }
 
 
-    private void putDataintoRecyclerView(List<ModelRV> myMovieList) {
+    private void putDataintoRecyclerView(ArrayList<ModelRV> myMovieList) {
 
         MovieAdapter adapter = new MovieAdapter(this, myMovieList,this);
-        GridLayoutManager gridView = new GridLayoutManager(this,3);
+        GridLayoutManager gridView = new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(gridView);
         recyclerView.setAdapter(adapter);
 
@@ -269,6 +292,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         headerRecycler.setLayoutManager(linearLayoutManager);
         headerRecycler.setAdapter(adapter);
+
+
 
 
     }

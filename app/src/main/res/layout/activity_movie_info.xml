@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainConstraint"
+    android:background="@color/bg_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MovieInfo">
@@ -35,7 +36,8 @@
             android:layout_below="@id/posterInfo">
 
             <TextView
-                android:id="@+id/releaseDate"
+                android:padding="@dimen/padding_default"
+                android:id="@+id/moviefullName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/txt_custom_Heading"
@@ -54,11 +56,24 @@
                     android:orientation="vertical"
                     android:layout_margin="@dimen/margin_default">
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_rating"
-                    android:padding="@dimen/padding_default"
-                    >
+                    android:padding="@dimen/padding_default">
+
+                    <ImageView
+                        android:id="@+id/shareIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_share"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginHorizontal="@dimen/margin_default"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_default"
+                        android:background="@drawable/bg_rating">
                     <TextView
                         android:layout_centerVertical="true"
                         android:id="@+id/ratingtxt"
@@ -82,22 +97,43 @@
                         android:textColor="@color/black"
 
                         />
+                    </RelativeLayout>
                 </RelativeLayout>
 
-                    <TextView
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/margin_default"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:text="Doctor Strange Into the Madness of Multtiverse"
-                        android:textSize="@dimen/txt_default_Heading"
-                        android:textStyle="bold"
-                        android:layout_marginTop="@dimen/margin_default"
-                        android:id="@+id/moviefullName"/>
+                        android:id="@+id/datelayout">
 
+                        <TextView
+
+                            android:id="@+id/datetxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Date: "
+                            android:textColor="@color/white"
+                            android:fontFamily="sans-serif"
+                            android:textSize="@dimen/txt_default_Heading"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_centerVertical="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="08-10-2022"
+                            android:fontFamily="sans-serif"
+                            android:textSize="@dimen/txt_default_Heading"
+                            android:layout_toEndOf="@id/datetxt"
+                            android:id="@+id/release_date"/>
+
+                    </RelativeLayout>
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_default">
+
+
 
                         <TextView
                             android:id="@+id/descriptiontxt"
@@ -107,15 +143,15 @@
                             android:textStyle="bold"
                             android:textSize="@dimen/txt_default_Heading"
                             android:textColor="@color/white"/>
+
                         <TextView
+                            android:id="@+id/descriptionChange"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/white"
-                            android:text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxi"
                             android:layout_below="@+id/descriptiontxt"
                             android:fontFamily="sans-serif"
-                            android:id="@+id/descriptionChange"
-                            />
+                            android:text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxi"
+                            android:textColor="@color/white" />
                         <RelativeLayout
                             android:id="@+id/layoutGenres"
                             android:layout_width="match_parent"
@@ -176,15 +212,16 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/layoutDirectors"
                             android:layout_marginTop="@dimen/margin_default">
+
                             <TextView
+                                android:id="@+id/castxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Genres: "
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/txt_default_Heading"
-                                android:id="@+id/castxt"
                                 android:fontFamily="sans-serif"
-                                />
+                                android:text="Cast:  "
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/txt_default_Heading" />
 
                             <TextView
 

@@ -1,5 +1,6 @@
 package com.example.testmovies.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,14 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.helper.widget.Layer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.testmovies.Interface.RecyclerViewInterface;
-import com.example.testmovies.MainActivity;
 import com.example.testmovies.Model.ModelRV;
-import com.example.testmovies.Model.headerModel;
 import com.example.testmovies.MovieInfo;
 import com.example.testmovies.R;
 
@@ -48,7 +46,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MovieAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         final ModelRV temp = movielist.get(position);
 
@@ -63,14 +61,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 load("https://image.tmdb.org/t/p/w500/"+movielist.get(position).getImage()).into(holder.img);
 
 
+
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(context,MovieInfo.class);
                 intent.putExtra("movie_name",temp.getName());
                 intent.putExtra("movie_description",temp.getDescription());
                 intent.putExtra("movie_rating",temp.getRating());
-                intent.putExtra("movie_image",temp.getImage());
+                intent.putExtra("movie_image",  temp.getImage().toString());
                 intent.putExtra("movie_genres",temp.getGenres());
                 intent.putExtra("movie_date",temp.getId());
                 intent.putExtra("movie_directors",temp.getDirectors());

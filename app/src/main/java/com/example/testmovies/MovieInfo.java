@@ -6,16 +6,24 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.media.Image;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.testmovies.Adapters.InfoAdapter;
 import com.example.testmovies.Adapters.MovieAdapter;
+import com.example.testmovies.Dialogues.ShareDialogue;
 import com.example.testmovies.Model.InfoModel;
 import com.example.testmovies.Model.ModelRV;
 
@@ -38,12 +46,13 @@ public class MovieInfo extends AppCompatActivity {
 
     private static String JSON_URL = "https://api.themoviedb.org/3/movie/popular?api_key=48c540694574b59258d76c1608bf2d46";
 
+
     NestedScrollView scrollView;
     ArrayList<InfoModel> infoMovielist;
     RecyclerView recyclerView;
     RelativeLayout relativeLayout;
     LinearLayout LM;
-    ImageView posterinfoimage;
+    ImageView posterinfoimage, sharebtn;
     TextView name,release_Date,description,rating,genres;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,24 +62,72 @@ public class MovieInfo extends AppCompatActivity {
         relativeLayout = findViewById(R.id.layoutInfoPoster);
         posterinfoimage = findViewById(R.id.posterInfo);
         name = findViewById(R.id.moviefullName);
-        release_Date = findViewById(R.id.releaseDate);
+        release_Date = findViewById(R.id.release_date);
         description = findViewById(R.id.descriptionChange);
         rating = findViewById(R.id.ratingChange);
         genres = findViewById(R.id.genresChange);
         recyclerView = findViewById(R.id.recyclerInfoSuggestions);
         LM = findViewById(R.id.layoutRecycler);
+        sharebtn = findViewById(R.id.shareIV);
+
+
+        ShareDialogue shareDialogue = new ShareDialogue(MovieInfo.this);
+        sharebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                shareDialogue.StartShareDialogue();
+
+                ImageView fb,wtsap,insta;
+                fb = findViewById(R.id.fb_share);
+                wtsap = findViewById(R.id.whatsapp_share);
+                insta = findViewById(R.id.insta_share);
+                if (fb.isClickable()){
+
+                    shareDialogue.DismissShareDialogue();
+                    Toast.makeText(MovieInfo.this, "Share to Facebook.....", Toast.LENGTH_SHORT).show();
+                }
+                else if(wtsap.isClickable()){
+                    shareDialogue.DismissShareDialogue();
+                    Toast.makeText(MovieInfo.this, "Share to Whatsapp.....", Toast.LENGTH_SHORT).show();
+                }
+                else if (insta.isClickable()){
+
+                    shareDialogue.DismissShareDialogue();
+                    Toast.makeText(MovieInfo.this, "Share to Instagram.....", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            shareDialogue.DismissShareDialogue();
+
+                        }
+                    },5000);
+
+                }
+
+
+            }
+        });
 
 
 
 
+        Intent intent = getIntent();
 
+      // posterinfoimage.setImageURI(Uri.parse("https://image.tmdb.org/t/p/w500/"+getIntent().getStringExtra("movie_image")));
 
-        posterinfoimage.setImageResource(getIntent().getIntExtra("movie_image",0));
-        release_Date.setText(getIntent().getStringExtra("movie_date"));
-        name.setText(getIntent().getStringExtra("movie_name"));
-        description.setText(getIntent().getStringExtra("movie_description"));
-        rating.setText(getIntent().getStringExtra("movie_rating"));
-        genres.setText(getIntent().getStringExtra("movie_genres"));
+        Glide.with(posterinfoimage).
+                load("https://image.tmdb.org/t/p/w500/"+intent.getStringExtra("movie_image")).into(posterinfoimage);
+
+        release_Date.setText(intent.getStringExtra("movie_date"));
+        name.setText(intent.getStringExtra("movie_name"));
+        description.setText(intent.getStringExtra("movie_description"));
+        rating.setText(intent.getStringExtra("movie_rating"));
+        genres.setText(intent.getStringExtra("movie_genres"));
 
 
 
@@ -144,7 +201,7 @@ public class MovieInfo extends AppCompatActivity {
 
                     infMrv.setId(jsonObject1.getString("release_date"));
                     infMrv.setName(jsonObject1.getString("title"));
-                    infMrv.setImage(jsonObject1.getString("poster_path"));
+                   infMrv.setImage(jsonObject1.getString("poster_path"));
                     infMrv.setRating(jsonObject1.getString("vote_average"));
                     infMrv.setDescription(jsonObject1.getString("overview"));
                   //  infMrv.setDirectors(jsonObject1.getString("production_companies"));

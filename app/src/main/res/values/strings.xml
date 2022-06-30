@@ -5,10 +5,14 @@
 
     <string name="description_default_text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus."</string>
 
+
+    <string name="Tamil_Movie">Sarkaru Vaari Paata</string>
+    <string name="kgf">K.G.F Chapter 2</string>
+    <string name="thar">THAR</string>
+    <string name="monster">Monster Hunter: Legends of the Guild</string>
+    <string name="tnw">The Tomorrow War</string>
+    <string name="spiderhead">Spiderhead</string>
     <!-- API'S   .............................  -->
-
-
-
 
 
     <!--Margins & Paddings...........................  -->

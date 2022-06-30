@@ -8,5 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bg_list">#101729</color>
-    <color name="rating_color">#fcba03</color>
+    <color name="rating_color">#fcba03</color>\
+
+    <color name="transparent_black">#B3000000</color>
 </resources>

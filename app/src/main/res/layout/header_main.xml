@@ -46,13 +46,12 @@
         android:layout_below="@id/movie_header_img"/>
 
     <ImageView
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/name_header_txt"
+        android:id="@+id/movie_header_img"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:id="@+id/movie_header_img"
-        android:src="@drawable/info_poster"
-        />
+        android:layout_below="@id/name_header_txt"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/info_poster" />
 
 </RelativeLayout>
 </androidx.cardview.widget.CardView>

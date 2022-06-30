@@ -71,7 +71,7 @@ public class ModelRV {
     }
 
     public String getImage() {
-        return image;
+        return String.valueOf(image);
     }
 
     public void setImage(String image) {
