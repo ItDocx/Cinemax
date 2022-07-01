@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:id="@+id/shareData"
+    tools:context=".Fragments.Share_fragment">
+
+    <RelativeLayout
+        android:background="@color/transparent_black"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:background="@drawable/bg_rating"
+            android:padding="@dimen/padding_default"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            android:gravity="center">
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Share"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/sharetitle"/>
+        <RelativeLayout
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/fb_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_fb"
+                />
+
+            <ImageView
+                android:layout_marginHorizontal="@dimen/margin_default"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/whatsapp_icon"
+                android:layout_toEndOf="@+id/fb_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_whatsapp"
+                />
+
+            <ImageView
+                android:layout_marginEnd="@dimen/margin_default"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/insta_icon"
+                android:layout_toEndOf="@id/whatsapp_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_insta"
+                />
+
+        </RelativeLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</FrameLayout>

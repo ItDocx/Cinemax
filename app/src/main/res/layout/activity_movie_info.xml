@@ -9,15 +9,21 @@
     android:layout_height="match_parent"
     tools:context=".MovieInfo">
 
-
-    <RelativeLayout
-        android:id="@+id/layoutInfoPoster"
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+    <RelativeLayout
+        android:id="@+id/layoutInfoPoster"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
         >
 
         <ImageView
@@ -60,43 +66,43 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_default">
 
+
                     <ImageView
-                        android:id="@+id/shareIV"
+                        android:id="@+id/sharIV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_share"
                         android:layout_alignParentRight="true"
                         android:layout_marginHorizontal="@dimen/margin_default"
-                        />
+                        android:background="@drawable/ic_baseline_share" />
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/padding_default"
                         android:background="@drawable/bg_rating">
-                    <TextView
-                        android:layout_centerVertical="true"
-                        android:id="@+id/ratingtxt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rating: "
-                        android:textSize="@dimen/txt_default_Heading"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        />
 
-                    <TextView
-                        android:layout_centerVertical="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="7.8"
-                        android:textSize="@dimen/txt_default_size"
-                        android:id="@+id/ratingChange"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@id/ratingtxt"
-                        android:textColor="@color/black"
+                        <TextView
+                            android:id="@+id/ratingtxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="Rating: "
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/txt_default_Heading"
+                            android:textStyle="bold" />
 
-                        />
+                        <TextView
+                            android:id="@+id/ratingChange"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/ratingtxt"
+                            android:text="7.8"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/txt_custom_size"
+                            android:textStyle="bold"
+
+                            />
                     </RelativeLayout>
                 </RelativeLayout>
 
@@ -128,6 +134,7 @@
                             android:id="@+id/release_date"/>
 
                     </RelativeLayout>
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -152,6 +159,7 @@
                             android:fontFamily="sans-serif"
                             android:text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxi"
                             android:textColor="@color/white" />
+
                         <RelativeLayout
                             android:id="@+id/layoutGenres"
                             android:layout_width="match_parent"
@@ -261,11 +269,13 @@
                                     />
                         </LinearLayout>
                     </RelativeLayout>
+
+
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
         </LinearLayout>
     </RelativeLayout>
-
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

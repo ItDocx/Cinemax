@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test Movies</string>
+    <string name="app_name">Cinemax</string>
 
     <!--Texts .............................  -->
 
@@ -25,8 +25,10 @@
     <!-- Tex Sizes .............................  -->
     <dimen name="txt_default_size">14sp</dimen>
     <dimen name="txt_default_Heading">16sp</dimen>
-    <dimen name="txt_custom_size">18sp</dimen>
+    <dimen name="txt_custom_size">16sp</dimen>
     <dimen name="txt_custom_Heading">20sp</dimen>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--Margins.............................  -->
 

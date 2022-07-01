@@ -2,30 +2,26 @@ package com.example.testmovies;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.testmovies.Adapters.InfoAdapter;
-import com.example.testmovies.Adapters.MovieAdapter;
-import com.example.testmovies.Dialogues.ShareDialogue;
+import com.example.testmovies.Fragments.Share_fragment;
 import com.example.testmovies.Model.InfoModel;
-import com.example.testmovies.Model.ModelRV;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,6 +34,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MovieInfo extends AppCompatActivity {
@@ -47,12 +44,14 @@ public class MovieInfo extends AppCompatActivity {
     private static String JSON_URL = "https://api.themoviedb.org/3/movie/popular?api_key=48c540694574b59258d76c1608bf2d46";
 
 
+    FrameLayout frameLayout;
+    ImageView share_btn;
     NestedScrollView scrollView;
     ArrayList<InfoModel> infoMovielist;
     RecyclerView recyclerView;
     RelativeLayout relativeLayout;
     LinearLayout LM;
-    ImageView posterinfoimage, sharebtn;
+    ImageView posterinfoimage;
     TextView name,release_Date,description,rating,genres;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,53 +67,24 @@ public class MovieInfo extends AppCompatActivity {
         genres = findViewById(R.id.genresChange);
         recyclerView = findViewById(R.id.recyclerInfoSuggestions);
         LM = findViewById(R.id.layoutRecycler);
-        sharebtn = findViewById(R.id.shareIV);
+        share_btn = findViewById(R.id.sharIV);
+        frameLayout = findViewById(R.id.container);
 
+      // Click Litener for Sharing
 
-        ShareDialogue shareDialogue = new ShareDialogue(MovieInfo.this);
-        sharebtn.setOnClickListener(new View.OnClickListener() {
+        share_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                shareDialogue.StartShareDialogue();
-
-                ImageView fb,wtsap,insta;
-                fb = findViewById(R.id.fb_share);
-                wtsap = findViewById(R.id.whatsapp_share);
-                insta = findViewById(R.id.insta_share);
-                if (fb.isClickable()){
-
-                    shareDialogue.DismissShareDialogue();
-                    Toast.makeText(MovieInfo.this, "Share to Facebook.....", Toast.LENGTH_SHORT).show();
-                }
-                else if(wtsap.isClickable()){
-                    shareDialogue.DismissShareDialogue();
-                    Toast.makeText(MovieInfo.this, "Share to Whatsapp.....", Toast.LENGTH_SHORT).show();
-                }
-                else if (insta.isClickable()){
-
-                    shareDialogue.DismissShareDialogue();
-                    Toast.makeText(MovieInfo.this, "Share to Instagram.....", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            shareDialogue.DismissShareDialogue();
-
-                        }
-                    },5000);
-
-                }
-
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.container, new Share_fragment(),null).addToBackStack(null).commit();
 
             }
         });
 
 
 
+
+        // Getting Data via Intent
 
         Intent intent = getIntent();
 

@@ -16,9 +16,6 @@
         android:theme="@style/Theme.TestMovies"
         tools:targetApi="31">
         <activity
-            android:name=".SliderDataactivity"
-            android:exported="false" />
-        <activity
             android:name=".MovieInfo"
             android:exported="false" />
         <activity
